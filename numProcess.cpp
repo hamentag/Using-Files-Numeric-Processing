@@ -6,7 +6,10 @@ using namespace std;
 int main()
 {
    ifstream inFile;
-   int number;
+   int number,
+       num0fNumbers = 0,
+       sum =0;
+   double average = 0.0;
 
    // Open the file.
    inFile.open("Random.txt");
@@ -14,12 +17,21 @@ int main()
    // If the file successfully opened, process it.
    if (inFile)
    {
-      // Read numbers from the file
+      // Read the numbers from the file
       while (inFile >> number)
       {
-        // display the number
-         cout << number << endl;
+         num0fNumbers++;
+         sum += number;       
       }
+
+      // Calculate the average
+      average = double (sum) / num0fNumbers;
+
+      // Display the calculated data
+      cout << "NUMERIC PROCESSING\n--------------------\n" 
+           << "The number of numbers found in the file: " 
+           << num0fNumbers << "\nThe sum of the numbers: " << sum 
+           <<                 "\nThe average: " << average;
 
       // Close the file.
       inFile.close();
